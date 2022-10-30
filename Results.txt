@@ -1,0 +1,30 @@
+Traditional ML Algorithms
+
+
+
+
+
+Neural Network Algorithms
+
+MLP: 
+Best trial config: {'l1': 8, 'l2': 256, 'lr': 0.000678082780900368, 'batch_size': 16, 'hidden_dim': 6, 'n_layers': 1}
+Best trial final validation loss: 0.17653940990567207
+
+RNN:
+Best trial config: {'l1': 8, 'l2': 32, 'lr': 0.00041848007491550944, 'batch_size': 4, 'hidden_dim': 10, 'n_layers': 10}
+Best trial final validation loss: 0.1894533668573086
+
+LSTM:
+Best trial config: {'l1': 128, 'l2': 8, 'lr': 0.0005815330559615102, 'batch_size': 16, 'hidden_dim': 6, 'n_layers': 4}
+Best trial final validation loss: 0.17347236722707748
+
+GRU:
+Best trial config: {'l1': 8, 'l2': 32, 'lr': 0.00033825890048956196, 'batch_size': 8, 'hidden_dim': 5, 'n_layers': 6}
+Best trial final validation loss: 0.23235508905989782
+
+Params of each are stored in "Best{Name of Algorithm}.pt"
+
+Based on the validation losses, it is possible to determine that a long short term memory recurrent neural network, using conventional factors, is the most suitable for predicting the annual number of earthquakes from 1750 to 2000. 
+
+When the output of the LSTM for 2000-2017 was compared against actual values, MAPE was valued at 1.0006967782974243. Naturally, this is a
+high error value and suggests that the GRU, properly trained on conventional factors, is unable to predict. This suggests a low causation and correlation between commonly accepted factors of earthquakes and post 2000 earthquake occurences. Since modern geological theories are unable to predict and explain the number of earthquakes, the current numbers of earthquakes are unexplainable and unexpected.

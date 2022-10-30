@@ -1,0 +1,45 @@
+Methodology
+1. Get data
+2. Clean data
+3. Dedicate old data as non test data and current data as test data
+4. Train different machine learning algorithms on the non test data
+5. Choose the algorithm with the best fit on old data (non test data)
+6. Generate predictions for current years and compare against test data
+
+
+Overview of Methodology
+
+Suppose there exists a ideal predictive model which is able to perfectly predict the annual number of earthquakes for years 1750-1999 using the factors in current geological theories. This is, the model perfectly understands the relations between the factors and the annual earthquake numbers from 1750-1999. The factors. 
+
+If the same model is unable to predict the annual earthquake numbers for years 2000-2018, this implies that the relations between the factors and annual earthquake numbers have changed. This can mean that the importance of each contributing factor has changed and/or there are more contributing factors. Regardless of the cause of the change, we can necessarily infer that the geological theories that we rely on to understand earthquakes are failing and that the current number of earthquakes cannot be explained by our current geological theories.
+
+Step 4 and 5 are aimed at deriving a model which best embodies the ideal model.
+
+
+Details for Step 1
+
+According to academic literature and availability of data, the chosen factors which contribute to earthquakes are temperature fluctuations, construction of dams, loss of global forest cover, volcanic eruptions and material extraction. 
+
+According to two sources (https://iopscience.iop.org/article/10.1088/1755-1315/167/1/012018/pdf, https://link.springer.com/article/10.1007/s12517-021-09229-y), global temperature fluctuations contribute to earthquakes. Due to additional pressure which can deform soil and rock, the construction of dams and reservoirs can contribute to earthquakes as shown in https://www.ias.ac.in/article/fulltext/reso/004/11/0004-0013. Similarly, so can material extraction, in the form of mining and fracking for materials, as shown by a variety of sources (https://www.jstor.org/stable/43432868, https://www.techtimes.com/articles/48828/20150426/usgs-confirms-wasterwater-fracking-causes-earthquakes-finally.htm, https://www.theguardian.com/world/2015/apr/24/earthquakes-fracking-drilling-us-geological-survey, https://www.theguardian.com/world/2015/apr/23/oil-gas-drilling-triggers-man-made-earthquakes-usgs). Volcanic eruptions can also cause earthquakes as evidenced in https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1029/2018GL079060. A loss of forest cover implies a loss of trees and their roots, causing rapid soil erosion which in turn causes earthquakes (https://www.nature.com/articles/ncomms6564). 
+
+Due to the the lack of data from 1750 to recent years for global material extraction, data on global energy consumption is considered instead due to its relative availability and its correlation with global material extraction. 
+
+
+Details for Step 4
+
+The different machine learning algorithms were selected based on their suitability for regression problems and analysing time series data. The traditional algorithms chosen were Multiple Linear Regression, Support Vector Machines, Random Forest, K-Nearest Neighbors, AdaBoost and XGBoost. The scikit-learn implementations of the first five algorithms were used and . The neural networks used were Multi Layer Perceptrons and three Recurrent Neural Network variants (Elman Network, Long Short Term Memory and Gated Recurrent Units). All of them were implemented via PyTorch. All traditional and non traditional algorithms were trained on the same training data and benchmarked on the same validation data. 
+
+Due to the difference that a change in hyperparameters can do to model accuracy, child variants of the general algorithms were generated based on hyperparameter differences. The best child variant of each algorithm was chosen based on it having the highest validation accuracy compared to its peers. This was achieved using the scikit-optimize and Tune libraries. The best child variant of each algorithm compared with its counterparts of other algorithms based on validation accuracy and the best model is thus decided. 
+
+Details for Steps 5 and 6
+
+The metric used to determine the model with the highest validation accuracy is the Mean Absolute Error (MAE). 
+
+The metric used to determine if the model is able to predict new data accurately is the Mean Average Percentage Error (MAPE). In a peer-reviewed article regarding the use of MAPE and its variants in social science research (written by David A. Swanson and published in Review in Economics and Finance and can be found at https://escholarship.org/uc/item/1f71t3x9), accuracy benchmarks for MAPE values are detailed. An MAPE value of less than 5% indicates an acceptably accurate forecast. An MAPE value that is greater than 10% but lower than 25% indicates low but acceptable accuracy. An MAPE value that is greater than 25% indicates a very low accuracy and an unacceptable forecast. As such, if the model generates an MAPE value of greater than 25%, it is possible to infer that the current frequency of earthquakes is unexpected and unexplainable by conventional factors and vice versa.   
+
+
+Limitations
+
+1. Although attempts were made to take into account all possible factors in current geographical theories, some factors unfortunately had to be left out due to a severe lack of data. For example, frequent measurements of tectonic movement (from 1750-2018) in the form of numerical values could not be found online. 
+
+2. As mentioned above, a large and crucial segment of the project is dedicated towards deriving a closest possible variant of the ideal predictive model. Even after choosing algorithms that are commonly relied on for time series regression and utilising hyperparameter optimisation, the resulting model may still be a far cry from the ideal model. 

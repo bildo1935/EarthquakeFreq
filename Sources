@@ -1,0 +1,39 @@
+Global Forest Cover
+
+1. For years 1750 to 2015, data was sourced from the supplementary material of a 2020 paper published by Land (https://doi.org/10.3390/land9050129). According to the Anthromes v2.1 classification system detailed in the paper, we deemed classes 52, 53, 54 and 61 to be forested areas. 
+
+2. For years 2016 and 2017, data was sourced from the Forest Resources Assessment 2020 by the UN FAO. Conversion from hectares to square kilometeres was made. 
+
+Number of Earthquakes
+
+1. For years 1750 to 2017, data was sourced from National Centers for Environmental Information (https://www.ngdc.noaa.gov/hazel/view/hazards/earthquake/search). No constraints for event parameters were used. 
+
+Number of Volcanic Eruptions
+
+1. For years 1750 to 2017, data was sourced from National Centers for Environmental Information (https://www.ngdc.noaa.gov/hazel/view/hazards/volcano/event-search). No constraints for event parameters were used. 
+
+Number of Dams Constructed
+
+1. For years 1750-2017, data was sourced from the Global Reservoir and Dam Database v1.3 (https://globaldamwatch.org/grand/). Although other dam datasets are available (e.g. the wider covering World Reservoir Database by the International Commission on Large Dams and the GlObal geOreferenced Database of Dams), the dataset was chosen due to its wide availability and its listing of the dates of completion of the dams. While every single dam in the world may not be documented in the dataset, the dataset can still be used effectively as long as the trend of the frequency of dam construction is being represented accurately.
+
+Global Energy Consumption
+
+1. The goal of the study is to determine whether modern day earthquake frequencies can still be determined using traditional variables as used in the past. This necessarily requires a long running timeframe from 1750 (start of industrial revolution) to the modern age. Although the variables of global annual material extraction (e.g. mining and fracking) output or annual sizes of world material extraction industry were chosen since they had the highest probability of directly explaining earthquakes, historical data on these variables could not be found. Thus, the variable of annual world energy consumption was used because of the availability of historical data as well as how its trends mimic that of the above variables. 
+
+2. For years 1700 and 1760, data from the UK, sourced from (https://www.sciencedirect.com/science/article/abs/pii/0301421579900491), is used to construct world data by assuming that the average UK citizen's energy habits are not dissimilar to his non-UK counterparts. (Conversion of tce/head to exajoules was done using world population data found at https://ourworldindata.org/grapher/population?time=1700..latest&country=~OWID_WRL). 
+
+3. For years 1800-2015, the data was sourced from this paper (https://www.sciencedirect.com/science/article/abs/pii/0301421579900491). Data for missing years were interpolated. 
+
+4. For years 1750-1800, data will be interpolated. 
+
+5. For years 2016-2017, data from the BP Statistical Review 2021 was used (https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/pdfs/energy-economics/statistical-review/bp-stats-review-2022-full-report.pdf). 
+
+Temperature Fluctuation
+
+1. For years 1750-2017, data was sourced from Berkeley Earth (http://berkeleyearth.lbl.gov/auto/Global/Complete_TAVG_complete.txt). Monthly raw data was condensed into annual data for coordination with other input data. Data comes in the form of anomalies from the 1951-1980 average value. 
+
+Additional Notes
+
+1. For the datasets above, values were not provided for every single year from 1750-2017. Data for the missing years were constructed via the pandas.DataFrame.interpolate() method in the pandas library using a linear method.
+
+2. The reason why 2017 was chosen as the final year of consideration was because of the limited availability of dam datasets. The dataset chosen was the only publicly available one which met the basic requirements of the study. However, it only contained data up till 2017. Thus, a compromise was made to reduce the final year of consideration from 2021 to 2017 as the dataset allows for the consideration of the important variable of subsurface pressure created via dam construction.
