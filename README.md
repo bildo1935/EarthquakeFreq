@@ -118,6 +118,18 @@ In a peer-reviewed article regarding the use of MAPE and its variants in social 
 
 2. As mentioned above, a large and crucial segment of the project is dedicated towards deriving a closest possible variant of the ideal predictive model. Even after choosing algorithms that are commonly relied on for time series regression and utilising hyperparameter optimisation, the resulting model may still be a far cry from the ideal model. 
 
+## Directory Guide
+| Folder Name | Purpose/Content |
+| :---: | :---: |
+| Raw Data | Unmodified data downloaded from sources (mentioned in Step 1) |
+| Modified Data | Modified and cleaned data before timeframe standardisation |
+| Modified Data (1750 to 2017) | Modified data after timeframe standardisation |
+| Arrays | Timeframe standardised and cleaned data in arrays after scaling |
+| Params | Parameters of algorithms with optimal hyperparameter configurations |
+| Processes | Contains various Jupyter Notebooks named after their purpose |
+
+
+
 # Results
 
 ## Neural Network Algorithms
